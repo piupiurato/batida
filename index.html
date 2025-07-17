@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Deliane Cristina</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="hearts-container"></div>
+
+  <div class="container">
+    <h1>Deliane Cristina 💖</h1>
+    <p>Este site é a forma mais sincera e simples de dizer:</p>
+    <h2>Eu amo você!</h2>
+    <button onclick="mostrarMensagem()">Clique aqui</button>
+    <p id="mensagem" class="hidden"></p>
+  </div>
+
+  <audio id="musica" src="musica.mp3"></audio>
+  <audio id="batida" src="musica2.mp3"></audio>
+
+ <script>
+  const musica = document.getElementById('musica');
+  const batidaSom = document.getElementById('batida');
+
+  function mostrarMensagem() {
+    const mensagem = document.getElementById('mensagem');
+    mensagem.innerText = "Deliane Cristina, Nem todas as palavras do mundo seriam suficientes para expressar o que sinto por ti. Tu és muito mais do que a mulher que amo… És o meu refúgio, a minha inspiração, a razão por trás dos meus sorrisos e a força que me levanta nos dias difíceis. Desde que entraste na minha vida, tudo ganhou um novo sentido. O simples facto de pensar em ti faz o meu coração bater mais forte, como se o universo inteiro gritasse dentro de mim o quanto eu te amo. O teu olhar acalma-me, o teu sorriso dá-me paz e o teu amor completa tudo aquilo que eu sou. Tu és aquela presença rara que transforma momentos simples em lembranças eternas. Não quero um dia sequer sem ti. Não quero uma noite sem o som da tua voz ou sem o conforto de saber que existes na minha vida. Amo-te com tudo o que sou, com todas as minhas falhas, com todos os meus sonhos, com toda a minha alma. Quero caminhar ao teu lado, construir uma história que seja só nossa, vencer todos os medos e conquistar todos os momentos. És e sempre serás o amor da minha vida, a minha escolha, o meu destino. Amo-te hoje, amanhã e para sempre. — Com todo o meu amor, Rúben Xavier Periquito";
+    mensagem.classList.remove('hidden');
+    mensagem.classList.add('fade-in');
+
+    musica.loop = true;
+    batidaSom.loop = true;
+
+    // Controle de volume: 0.0 (mudo) a 1.0 (máximo)
+    musica.volume = 0.4;     // Baixar a música principal
+    batidaSom.volume = 1.0;  // Aumentar a batida ao máximo
+
+    musica.play();
+    batidaSom.play();
+  }
+
+  // Gerar corações sem tocar batida individual (já está em loop)
+  const heartsContainer = document.querySelector('.hearts-container');
+
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (3 + Math.random() * 2) + 's';
+    heartsContainer.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 5000);
+  }
+
+  setInterval(createHeart, 500);
+</script>
+
+
+</body>
+</html>
